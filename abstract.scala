@@ -17,7 +17,6 @@ abstract class Element {
   override def toString = contents mkString " "
 }
 
-
 // new Element
 // that won't work here
 
@@ -95,3 +94,4 @@ var le8 = new LineElement("booo")
 
 var concatted3 = ae7.beside(le8)
 println(s"beside on 1 line: $concatted3")
+

@@ -1,0 +1,55 @@
+var hi = "1"
+
+abstract class Pet (name: String) {
+	val greeting: String
+	var age: Int
+	def sayHello: Unit = { println(greeting) }
+	override def toString = s"I say $greeting, and I'm $age"
+}
+
+class Dog (name: String) extends Pet (name) {
+	val greeting = "Woof"
+	var age = 2
+}
+
+class Cat (name: String) extends Pet (name) {
+	val greeting = "Meow"
+	var age = 5
+}
+
+object AbstractFieldsDemo extends App {
+	def doThing(): Unit = {
+		val dog = new Dog("Fido")
+		val cat = new Cat("Morris")
+		dog.sayHello
+		cat.sayHello
+		println(dog)
+		println(cat)
+		// verify that the age can be changed
+		cat.age = 10
+		println(cat)
+	}
+}
+
+AbstractFieldsDemo.doThing()
+
+def f1(f: Int => Int): Unit = {
+	println(">> f1")
+	println("    go  " + f(5))
+	println("    go  " + f(8))
+	println("<< f1")
+}
+
+f1({println("   >> add 23"); _ + 23})
+
+val x: Int => Int = _ + 1
+f1(x)
+
+def f2(f: () => Int): Unit = {
+	println(">> f2")
+	println("    go  " + f())
+	println("    go  " + f())
+	println("<< f2")
+}
+
+f2({() => println(" >> return 42"); 42})
